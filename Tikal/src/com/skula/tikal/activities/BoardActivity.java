@@ -10,6 +10,6 @@ public class BoardActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.boardlayer);
+		setContentView(new BoardView(this));
 	}
 }
