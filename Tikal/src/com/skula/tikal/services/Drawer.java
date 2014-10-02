@@ -24,6 +24,38 @@ public class Drawer {
 		paint.setColor(Color.WHITE);
 		c.drawRect(new Rect(0,0,1280,800), paint);
 		drawTiles(c);
+		
+		int x = 1180;
+		int dy = 95;
+		int y = 350;
+		int size = 80;
+		
+		// points d'action
+		paint.setColor(Color.BLACK);
+		paint.setTextSize(50f);
+		c.drawText("10 PA", 1100, 325, paint);
+		
+		// actions
+		paint.setColor(Color.BLUE);
+		for(int i=0; i<4; i++){
+			c.drawRect(new Rect(x, y+i*dy, x + size,  y+i*dy + size), paint);
+		}
+		x = 1085;
+		for(int i=0; i<4; i++){
+			c.drawRect(new Rect(x, y+i*dy, x + size,  y+i*dy + size), paint);
+		}
+		
+		// scores + etat des joueurs
+		x = 1080;
+		y = 5;
+		dy = 65;
+		int xsize = 190;
+		int ysize = 60;
+		paint.setColor(Color.GREEN);
+		for(int i=0; i<4; i++){
+			c.drawRect(new Rect(x, y+i*dy, x + xsize,  y+i*dy + ysize), paint);
+		}
+		
 	}
 
 	private void drawTiles(Canvas c) {
