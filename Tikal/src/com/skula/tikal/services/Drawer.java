@@ -48,12 +48,20 @@ public class Drawer {
 		// scores + etat des joueurs
 		x = 1080;
 		y = 5;
-		dy = 65;
+		dy = 70;
 		int xsize = 190;
 		int ysize = 60;
-		paint.setColor(Color.GREEN);
 		for(int i=0; i<4; i++){
+			paint.setColor(Color.GREEN);
 			c.drawRect(new Rect(x, y+i*dy, x + xsize,  y+i*dy + ysize), paint);
+			paint.setColor(Color.BLACK);
+
+			paint.setTextSize(25f);
+			//paint.setStrokeWidth(5);
+			c.drawText("1000 pts", x + 5, y+i*dy +25, paint);
+			c.drawText("9", x + 5, y+i*dy +50, paint);
+			paint.setTextSize(60f);
+			c.drawText("^", x + 130, y+i*dy + 60, paint);
 		}
 		
 	}
