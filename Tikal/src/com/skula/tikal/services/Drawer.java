@@ -21,8 +21,13 @@ public class Drawer {
 	}
 
 	public void draw(Canvas c) {
-		paint.setColor(Color.WHITE);
+
+		/*paint.setColor(Color.RED);
 		c.drawRect(new Rect(0,0,1280,800), paint);
+		paint.setColor(Color.WHITE);
+		c.drawRect(new Rect(0,0,1280,736), paint);*/
+		
+		drawBackground(c);
 		drawTiles(c);
 		
 		int x = 1180;
@@ -32,10 +37,11 @@ public class Drawer {
 		
 		// points d'action
 		paint.setColor(Color.BLACK);
-		paint.setTextSize(50f);
-		c.drawText("10 PA", 1100, 325, paint);
+		paint.setTextSize(35f);
+		c.drawText("10 PA", 1100, 330, paint);
 		
 		// actions
+		y = 360;
 		paint.setColor(Color.BLUE);
 		for(int i=0; i<4; i++){
 			c.drawRect(new Rect(x, y+i*dy, x + size,  y+i*dy + size), paint);
@@ -92,6 +98,11 @@ public class Drawer {
 		}
 	}
 
+	private void drawBackground(Canvas canvas) {
+		canvas.drawBitmap(getPict(R.drawable.background), new Rect(0, 0, 1280, 736), 
+				new Rect(0, 0, 1280, 736), null);
+	}
+	
 	private void drawTile(Canvas canvas, Rect rect, int id) {
 		canvas.drawBitmap(getPict(id), new Rect(0, 0, Cnst.TILE_WIDTH,
 				Cnst.TILE_HIGHT), rect, null);
