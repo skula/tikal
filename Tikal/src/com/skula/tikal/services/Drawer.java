@@ -67,8 +67,8 @@ public class Drawer {
 
 			paint.setTextSize(25f);
 			//paint.setStrokeWidth(5);
-			c.drawText("1000 pts", x + 5, y+i*dy +25, paint);
-			c.drawText("9", x + 5, y+i*dy +50, paint);
+			c.drawText("1000 pts", x + 15, y+i*dy +27, paint);
+			c.drawText("9", x + 15, y+i*dy +52, paint);
 			paint.setTextSize(60f);
 			c.drawText("^", x + 130, y+i*dy + 60, paint);
 		}
@@ -89,14 +89,14 @@ public class Drawer {
 				if(i>0){
 					x-=xEcart*i;
 				}
-				
+				x-=1;
 				if (i % 2 == 0) { // col haute
 					y = dy * j;
 				} else {
 					y = dy * j + yEcart;
 				}
-				y+=25;
-				drawTile(c, new Rect(x,y,x+Cnst.TILE_DRAW_WIDTH, y+Cnst.TILE_DRAW_HIGHT), R.drawable.tile);
+				y+=25 - 1;
+				drawTile(c, new Rect(x,y,x+Cnst.TILE_DRAW_WIDTH+1, y+Cnst.TILE_DRAW_HIGHT), R.drawable.tile);
 			}
 		}
 	}
@@ -112,7 +112,7 @@ public class Drawer {
 	}
 	
 	private void drawScore(Canvas canvas, Rect rect) {
-		canvas.drawBitmap(getPict(R.drawable.score), new Rect(0, 0, 80, 80), 
+		canvas.drawBitmap(getPict(R.drawable.score), new Rect(0, 0, 190, 60), 
 				rect, null);
 	}
 	
