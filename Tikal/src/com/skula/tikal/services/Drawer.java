@@ -44,11 +44,13 @@ public class Drawer {
 		y = 360;
 		paint.setColor(Color.BLUE);
 		for(int i=0; i<4; i++){
-			c.drawRect(new Rect(x, y+i*dy, x + size,  y+i*dy + size), paint);
+			//c.drawRect(new Rect(x, y+i*dy, x + size,  y+i*dy + size), paint);
+			drawAction(c, new Rect(x, y+i*dy, x + size,  y+i*dy + size));
 		}
 		x = 1085;
 		for(int i=0; i<4; i++){
-			c.drawRect(new Rect(x, y+i*dy, x + size,  y+i*dy + size), paint);
+			//c.drawRect(new Rect(x, y+i*dy, x + size,  y+i*dy + size), paint);
+			drawAction(c, new Rect(x, y+i*dy, x + size,  y+i*dy + size));
 		}
 		
 		// scores + etat des joueurs
@@ -59,7 +61,8 @@ public class Drawer {
 		int ysize = 60;
 		for(int i=0; i<4; i++){
 			paint.setColor(Color.GREEN);
-			c.drawRect(new Rect(x, y+i*dy, x + xsize,  y+i*dy + ysize), paint);
+			//c.drawRect(new Rect(x, y+i*dy, x + xsize,  y+i*dy + ysize), paint);
+			drawScore(c, new Rect(x, y+i*dy, x + xsize,  y+i*dy + ysize));
 			paint.setColor(Color.BLACK);
 
 			paint.setTextSize(25f);
@@ -101,6 +104,16 @@ public class Drawer {
 	private void drawBackground(Canvas canvas) {
 		canvas.drawBitmap(getPict(R.drawable.background), new Rect(0, 0, 1280, 736), 
 				new Rect(0, 0, 1280, 736), null);
+	}
+	
+	private void drawAction(Canvas canvas, Rect rect) {
+		canvas.drawBitmap(getPict(R.drawable.action), new Rect(0, 0, 80, 80), 
+				rect, null);
+	}
+	
+	private void drawScore(Canvas canvas, Rect rect) {
+		canvas.drawBitmap(getPict(R.drawable.score), new Rect(0, 0, 80, 80), 
+				rect, null);
 	}
 	
 	private void drawTile(Canvas canvas, Rect rect, int id) {
