@@ -1,13 +1,15 @@
 package com.skula.tikal.constantes;
 
 public class Cnst {
-	public static final int TILE_WIDTH = 165;//140;
-	public static final int TILE_HIGHT = 125;//113;
-	public static final int TILE_DRAW_WIDTH = 165;
-	public static final int TILE_DRAW_HIGHT = 125;
+	public static final int TILE_WIDTH = 165;
+	public static final int TILE_HIGHT = 125;
+	public static final int TEMPLE_SIZE = 68;
+	public static final int TRESOR_SIZE = 63;
+	public static final int STONES_SIZE = 32;
 
-	public static final int ROW_COUNT = 5;
-	public static final int COLUMN_COUNT = 8;
+	// plateau
+	public static final int ROWS_COUNT = 5;
+	public static final int COLUMNS_COUNT = 8;
 
 	// pions
 	public static final int SPAWN_COUNT = 18;
@@ -34,10 +36,6 @@ public class Cnst {
 	public static final int ACTION_BUILD_CAMP_POINTS = 5;
 
 	public static final int CAMP_COUNT = 2;
-
-	// plateau
-	public static final int ROWS_COUNT = 5;
-	public static final int COLUMNS_COUNT = 8;
 
 	// medaillons
 	public static final int MEDALLION_TYPE_COUNT = 8;

@@ -8,11 +8,6 @@ public class Board {
 	private Tile tiles[][];
 	private int nPlayers;
 
-	public static void main(String[] args) {
-		Board board = new Board(2);
-		Card c = new Card(1, CardType.JUNGLE, 0, 0, 0, 0, 0, 0, 0);
-		
-	}
 
 	public Board(int nPlayers) {
 		this.nPlayers = nPlayers;
@@ -21,6 +16,17 @@ public class Board {
 		tiles[0][4] = new Tile(Card.CARD_X0Y4, nPlayers);
 		tiles[1][3] = new Tile(Card.CARD_X1Y3, nPlayers);
 		tiles[1][4] = new Tile(Card.CARD_X1Y4, nPlayers);
+		
+		mock();
+	}
+	
+	private void mock(){
+		tiles[0][0] = new Tile(new Card(1, CardType.TREASURE, 1, 1, 1, 1, 1, 1, 1), nPlayers);
+
+		tiles[0][1] = new Tile(new Card(1, CardType.TREASURE, 2, 2, 1, 1, 1, 1, 1), nPlayers);
+		tiles[0][2] = new Tile(new Card(1, CardType.TREASURE, 3, 3, 1, 1, 1, 1, 1), nPlayers);
+
+		tiles[1][0] = new Tile(new Card(1, CardType.TREASURE, 4, 1, 1, 1, 1, 1, 1), nPlayers);
 	}
 
 	// a faire et a tester
@@ -249,5 +255,9 @@ public class Board {
 			return null;
 		}
 		return tiles[i][j];
+	}
+	
+	public Tile[][] getTiles(){
+		return tiles;
 	}
 }
