@@ -10,6 +10,7 @@ import android.graphics.Rect;
 
 import com.skula.tikal.R;
 import com.skula.tikal.constantes.Cnst;
+import com.skula.tikal.models.Tile;
 
 public class Drawer {
 	private Paint paint;
@@ -84,7 +85,7 @@ public class Drawer {
 		int xEcart = 42;
 
 		for (int j = 0; j < Cnst.ROW_COUNT; j++) {
-			for (int i = 0; i < Cnst.COLUMN_COUNT; i++) {
+			for (int i = 0; i < 1; i++) {
 				x = dx * i+25;
 				if(i>0){
 					x-=xEcart*i;
@@ -99,6 +100,54 @@ public class Drawer {
 				drawTile(c, new Rect(x,y,x+Cnst.TILE_DRAW_WIDTH+1, y+Cnst.TILE_DRAW_HIGHT), R.drawable.tile);
 			}
 		}
+	}
+	
+	private void drawTiles(Canvas c, Tile[][] tiles){
+		for (int j = 0; j < Cnst.ROW_COUNT; j++) {
+			for (int i = 0; i < 1; i++) {
+				drawTile(c,tiles[i][j], i, j);
+			}
+		}
+	}
+	private void drawTile(Canvas c, Tile t, int i, int j){
+		// tuile
+		if(t.isVolcano()){
+			// tuile volcano
+			return;
+		}else{
+			// tuile jungle
+		}
+		
+		// portes
+		drawStones(c,t,i,j);
+		
+		if(t.isTemple()){
+			// temples
+			drawTemple(c,t.getLevel(),i,j);
+			// proprietaire
+		}else if(t.isTreasure()){
+			// tresors
+			drawTresor(c,t.getLevel(),i,j);			
+		}
+		
+		// camp
+		
+		// pions
+		
+		// leader
+		
+	}
+	
+	private void drawStones(Canvas c, Tile t, int i, int j){
+	
+	}
+	
+	private void drawTemple(Canvas c, int level, int i, int j){
+		
+	}
+	
+	private void drawTresor(Canvas c, int level, int i, int j){
+		
 	}
 
 	private void drawBackground(Canvas canvas) {
