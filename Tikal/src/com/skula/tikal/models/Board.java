@@ -23,10 +23,18 @@ public class Board {
 	private void mock(){
 		tiles[0][0] = new Tile(new Card(1, CardType.TREASURE, 1, 1, 1, 1, 1, 1, 1), nPlayers);
 
-		tiles[0][1] = new Tile(new Card(1, CardType.TREASURE, 2, 2, 1, 1, 1, 1, 1), nPlayers);
-		tiles[0][2] = new Tile(new Card(1, CardType.TREASURE, 3, 3, 1, 1, 1, 1, 1), nPlayers);
+		tiles[0][1] = new Tile(new Card(1, CardType.TREASURE, 3, 3, 3, 3, 3, 3, 3), nPlayers);
+		tiles[0][2] = new Tile(new Card(1, CardType.TEMPLE, 3, 3, 3, 3, 3, 3, 3), nPlayers);
 
-		tiles[1][0] = new Tile(new Card(1, CardType.TREASURE, 4, 1, 1, 1, 1, 1, 1), nPlayers);
+		tiles[1][0] = new Tile(new Card(1, CardType.TREASURE, 4, 3, 3, 3, 3, 3, 3), nPlayers);
+		/*List<Card> list = Card.getAllCards();
+		int cpt=0;
+		for(int j=0; j<Cnst.ROWS_COUNT; j++){
+			for(int i=0; i<7; i++){
+				tiles[i][j] = new Tile(list.remove(cpt), nPlayers);
+				//cpt++;
+			}
+		}*/
 	}
 
 	// a faire et a tester

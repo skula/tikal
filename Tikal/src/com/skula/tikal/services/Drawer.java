@@ -126,6 +126,22 @@ public class Drawer {
 		if (t.getStonesN() > 0) {
 			drawStonesN(c, t, x, y);
 		}
+		
+		if (t.getStonesNE() > 0) {
+			drawStonesNE(c, t, x, y);
+		}
+		if (t.getStonesSE() > 0) {
+			drawStonesSE(c, t, x, y);
+		}
+		if (t.getStonesS() > 0) {
+			drawStonesS(c, t, x, y);
+		}
+		if (t.getStonesSW() > 0) {
+			drawStonesSW(c, t, x, y);
+		}
+		if (t.getStonesNW() > 0) {
+			drawStonesNW(c, t, x, y);
+		}
 
 		if (t.isTemple()) {
 			// temples
@@ -161,41 +177,130 @@ public class Drawer {
 		default:
 			break;
 		}
-		try {
-			c.drawBitmap(getPict(id), new Rect(0, 0, Cnst.STONES_SIZE,
-					Cnst.STONES_SIZE), new Rect(x, y, x + Cnst.STONES_SIZE, y
-					+ Cnst.STONES_SIZE), null);
-		} catch (Exception e) {
-			e.getMessage();
+		c.drawBitmap(getPict(id), new Rect(0, 0, Cnst.STONES_SIZE,
+				Cnst.STONES_SIZE), new Rect(x, y, x + Cnst.STONES_SIZE, y
+				+ Cnst.STONES_SIZE), null);
+	}
+	
+	private void drawStonesNE(Canvas c, Tile t, int x, int y) {
+		x+=115;
+		y+=24;
+		int id = 0;
+		switch (t.getStonesNE()) {
+		case 1:
+			id = R.drawable.stones1ne;
+			break;
+		case 2:
+			id = R.drawable.stones2ne;
+			break;
+		case 3:
+			id = R.drawable.stones3ne;
+			break;
+		default:
+			break;
 		}
+		c.drawBitmap(getPict(id), new Rect(0, 0, Cnst.STONES_SIZE,
+				Cnst.STONES_SIZE), new Rect(x, y, x + Cnst.STONES_SIZE, y
+				+ Cnst.STONES_SIZE), null);
+
 	}
 
-	/*
-	 * private void drawStonesNE(Canvas c, Tile t, int x, int y){ // N x1 = 0;
-	 * y1 = 0; switch(t.setStonesNE()){ case 1: break; case 2: break; case 3:
-	 * break; default: break; } }
-	 * 
-	 * private void drawStonesSE(Canvas c, Tile t, int x, int y){ // N x1 = 0;
-	 * y1 = 0; switch(t.setStonesSE()){ case 1: break; case 2: break; case 3:
-	 * break; default: break; } }
-	 * 
-	 * private void drawStonesS(Canvas c, Tile t, int x, int y){ // N x1 = 0; y1
-	 * = 0; switch(t.setStonesS()){ case 1: break; case 2: break; case 3: break;
-	 * default: break; } }
-	 * 
-	 * private void drawStonesSW(Canvas c, Tile t, int x, int y){ // N x1 = 0;
-	 * y1 = 0; switch(t.setStonesSW()){ case 1: break; case 2: break; case 3:
-	 * break; default: break; } }
-	 * 
-	 * private void drawStonesNW(Canvas c, Tile t, int x, int y){ // N x1 = 0;
-	 * y1 = 0; switch(t.setStonesNW()){ case 1: break; case 2: break; case 3:
-	 * break; default: break; } }
-	 */
+	private void drawStonesSE(Canvas c, Tile t, int x, int y) {
+		x+=115;
+		y+=69;
+		int id = 0;
+		switch (t.getStonesSE()) {
+		case 1:
+			id = R.drawable.stones1se;
+			break;
+		case 2:
+			id = R.drawable.stones2se;
+			break;
+		case 3:
+			id = R.drawable.stones3se;
+			break;
+		default:
+			break;
+		}
+		c.drawBitmap(getPict(id), new Rect(0, 0, Cnst.STONES_SIZE,
+				Cnst.STONES_SIZE), new Rect(x, y, x + Cnst.STONES_SIZE, y
+				+ Cnst.STONES_SIZE), null);
+
+	}
+	
+	private void drawStonesS(Canvas c, Tile t, int x, int y) {
+		x+=68;
+		y+=93;
+		int id = 0;
+		switch (t.getStonesS()) {
+		case 1:
+			id = R.drawable.stones1s;
+			break;
+		case 2:
+			id = R.drawable.stones2s;
+			break;
+		case 3:
+			id = R.drawable.stones3s;
+			break;
+		default:
+			break;
+		}
+		c.drawBitmap(getPict(id), new Rect(0, 0, Cnst.STONES_SIZE,
+				Cnst.STONES_SIZE), new Rect(x, y, x + Cnst.STONES_SIZE, y
+				+ Cnst.STONES_SIZE), null);
+
+	}
+	
+	private void drawStonesSW(Canvas c, Tile t, int x, int y) {
+		x+=20;
+		y+=70;
+		int id = 0;
+		switch (t.getStonesSW()) {
+		case 1:
+			id = R.drawable.stones1sw;
+			break;
+		case 2:
+			id = R.drawable.stones2sw;
+			break;
+		case 3:
+			id = R.drawable.stones3sw;
+			break;
+		default:
+			break;
+		}
+		c.drawBitmap(getPict(id), new Rect(0, 0, Cnst.STONES_SIZE,
+				Cnst.STONES_SIZE), new Rect(x, y, x + Cnst.STONES_SIZE, y
+				+ Cnst.STONES_SIZE), null);
+
+	}
+	
+	private void drawStonesNW(Canvas c, Tile t, int x, int y) {
+		x+=19;
+		y+=23;
+		int id = 0;
+		switch (t.getStonesNW()) {
+		case 1:
+			id = R.drawable.stones1nw;
+			break;
+		case 2:
+			id = R.drawable.stones2nw;
+			break;
+		case 3:
+			id = R.drawable.stones3nw;
+			break;
+		default:
+			break;
+		}
+
+		c.drawBitmap(getPict(id), new Rect(0, 0, Cnst.STONES_SIZE,
+				Cnst.STONES_SIZE), new Rect(x, y, x + Cnst.STONES_SIZE, y
+				+ Cnst.STONES_SIZE), null);
+	}
 
 	private void drawTemple(Canvas c, int level, int x, int y) {
 		int id = 0;
-		x += 47;
-		y += 30;
+		x += 49;
+		y += 28;
 		switch (level) {
 		case 1:
 			id = R.drawable.temple1;
