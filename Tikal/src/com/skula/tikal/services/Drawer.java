@@ -147,6 +147,9 @@ public class Drawer {
 			// temples
 			drawTemple(c, t.getLevel(), x, y);
 			// proprietaire
+			if(t.isSettled()){
+				drawTempleOwner(c, t.getOwnerId(), x, y);
+			}
 		} else if (t.isTreasure()) {
 			// tresors
 			drawTresor(c, t.getLevel(), x, y);
@@ -158,6 +161,31 @@ public class Drawer {
 
 		// leader
 
+	}
+	
+	private void drawTempleOwner(Canvas c, int id, int x, int y) {
+		x += 52;
+		y += 31;
+		int img=0;
+		switch(id){
+		case 0:
+			img = R.drawable.templeownerp1;
+			break;
+		case 1:
+			img = R.drawable.templeownerp2;
+			break;
+		case 2:
+			img = R.drawable.templeownerp3;
+			break;
+		case 3:
+			img = R.drawable.templeownerp4;
+			break;
+		default:
+			break;
+		}
+		
+		c.drawBitmap(getPict(img), new Rect(0, 0, 62, 62), new Rect(x, y, x + 62, y
+				+ 62), null);
 	}
 
 	private void drawStonesN(Canvas c, Tile t, int x, int y) {
