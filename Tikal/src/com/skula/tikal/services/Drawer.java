@@ -1,11 +1,14 @@
 package com.skula.tikal.services;
 
+import java.util.Map;
+
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Paint.Style;
 import android.graphics.Rect;
 
 import com.skula.tikal.R;
@@ -158,9 +161,52 @@ public class Drawer {
 		// camp
 
 		// pions
+		drawSpawns(c, t.getSpawns(), x, y);
 
 		// leader
 
+	}
+	
+	private void drawSpawns(Canvas c, Map<Integer, Integer> spawns, int x, int y) {
+		int x1 = 0;
+		int y1 = 0;
+		int id = 0;
+		for(int key : spawns.keySet()){
+			int nb = spawns.get(key);
+			if(nb>0){
+				switch(key){
+				case 0:
+					x1 = x + 36;
+					y1 = y + 1;
+					id = R.drawable.spawnsp1;
+					break;
+				case 1:
+					x1 = x + 100;
+					y1 = y + 1;
+					id = R.drawable.spawnsp2;
+					break;
+				case 2:
+					x1 = x + 36;
+					y1 = y + 92;
+					id = R.drawable.spawnsp3;
+					break;
+				case 3:
+					x1 = x + 100;
+					y1 = y + 92;
+					id = R.drawable.spawnsp4;
+					break;
+				default:
+					break;
+				}
+				c.drawBitmap(getPict(id), new Rect(0, 0, 32, 32), new Rect(x1, y1, x1 + 32, y1 + 32), null);
+				x1+=5;
+				y1+=23;
+				paint.setTextSize(20f);
+				paint.setStyle(Style.FILL);
+				paint.setColor(Color.YELLOW);
+				c.drawText("10", x1, y1, paint);
+			}
+		}
 	}
 	
 	private void drawTempleOwner(Canvas c, int id, int x, int y) {

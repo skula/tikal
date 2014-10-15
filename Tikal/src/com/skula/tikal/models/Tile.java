@@ -15,11 +15,6 @@ public class Tile extends Card {
 	private Map<Integer, Integer> spawns; // <playerId, count>
 	private List<Integer> leaders; // <playerId>
 
-	public static void main(String[] args) {
-		Card c = new Card(1, CardType.TEMPLE, 1, 1, 2, 3, 4, 5, 6);
-		Tile t = new Tile(c, 2);
-	}
-
 	public Tile(Card card, int nPlayers) {
 		super(card);
 		this.settled = false;
@@ -60,7 +55,14 @@ public class Tile extends Card {
 	
 	// ok
 	public void addSpawn(int playerId) {
-		spawns.put(playerId, spawns.get(playerId) + 1);
+		try{
+		int n = spawns.get(playerId) + 1;
+		
+		spawns.put(playerId, n);
+		}
+		catch(Exception e){
+			e.getMessage();
+		}
 	}
 
 	public void removeSpawn(int playerId) {

@@ -14,7 +14,7 @@ public class BoardView extends View {
 
 	public BoardView(Context context) {
 		super(context);
-		this.engine = new GameEngine(1);
+		this.engine = new GameEngine(4);
 		this.drawer = new Drawer(context.getResources(), engine);
 	}
 

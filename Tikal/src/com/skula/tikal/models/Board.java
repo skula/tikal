@@ -22,7 +22,10 @@ public class Board {
 	
 	private void mock(){
 		tiles[0][0] = new Tile(new Card(1, CardType.TREASURE, 1, 1, 1, 1, 1, 1, 1), nPlayers);
-		
+		tiles[0][0].addSpawn(0);
+		tiles[0][0].addSpawn(1);
+		tiles[0][0].addSpawn(2);
+		tiles[0][0].addSpawn(3);
 
 		tiles[0][1] = new Tile(new Card(1, CardType.TREASURE, 3, 3, 3, 3, 3, 3, 3), nPlayers);
 		tiles[0][2] = new Tile(new Card(1, CardType.TEMPLE, 3, 3, 3, 3, 3, 3, 3), nPlayers);
