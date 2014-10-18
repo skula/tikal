@@ -27,13 +27,6 @@ public class Drawer {
 	}
 
 	public void draw(Canvas c) {
-
-		/*
-		 * paint.setColor(Color.RED); c.drawRect(new Rect(0,0,1280,800), paint);
-		 * paint.setColor(Color.WHITE); c.drawRect(new Rect(0,0,1280,736),
-		 * paint);
-		 */
-
 		drawBackground(c);
 		drawTiles(c, engine.getBoard().getTiles());
 
@@ -129,7 +122,7 @@ public class Drawer {
 		if (t.getStonesN() > 0) {
 			drawStonesN(c, t, x, y);
 		}
-		
+
 		if (t.getStonesNE() > 0) {
 			drawStonesNE(c, t, x, y);
 		}
@@ -148,10 +141,12 @@ public class Drawer {
 
 		if (t.isTemple()) {
 			// temples
-			drawTemple(c, t.getLevel(), x, y);
 			// proprietaire
-			if(t.isSettled()){
-				drawTempleOwner(c, t.getOwnerId(), x, y);
+			if (t.isSettled()) {
+				drawTempleOwner(c, t.getOwnerId(), t.getLevel(), x, y);
+			} else {
+				drawTemple(c, t.getLevel(), x, y);
+				drawMostPop(c, t.getDominant(), x, y);
 			}
 		} else if (t.isTreasure()) {
 			// tresors
@@ -166,15 +161,15 @@ public class Drawer {
 		// leader
 
 	}
-	
+
 	private void drawSpawns(Canvas c, Map<Integer, Integer> spawns, int x, int y) {
 		int x1 = 0;
 		int y1 = 0;
 		int id = 0;
-		for(int key : spawns.keySet()){
+		for (int key : spawns.keySet()) {
 			int nb = spawns.get(key);
-			if(nb>0){
-				switch(key){
+			if (nb > 0) {
+				switch (key) {
 				case 0:
 					x1 = x + 36;
 					y1 = y + 1;
@@ -198,9 +193,10 @@ public class Drawer {
 				default:
 					break;
 				}
-				c.drawBitmap(getPict(id), new Rect(0, 0, 32, 32), new Rect(x1, y1, x1 + 32, y1 + 32), null);
-				x1+=5;
-				y1+=23;
+				c.drawBitmap(getPict(id), new Rect(0, 0, 32, 32), new Rect(x1,
+						y1, x1 + 32, y1 + 32), null);
+				x1 += 5;
+				y1 += 23;
 				paint.setTextSize(20f);
 				paint.setStyle(Style.FILL);
 				paint.setColor(Color.YELLOW);
@@ -208,12 +204,12 @@ public class Drawer {
 			}
 		}
 	}
-	
-	private void drawTempleOwner(Canvas c, int id, int x, int y) {
-		x += 52;
-		y += 31;
-		int img=0;
-		switch(id){
+
+	private void drawTempleOwner(Canvas c, int id, int level, int x, int y) {
+		x += 49;
+		y += 28;
+		int img = 0;
+		switch (id) {
 		case 0:
 			img = R.drawable.templeownerp1;
 			break;
@@ -229,14 +225,82 @@ public class Drawer {
 		default:
 			break;
 		}
+
+		c.drawBitmap(getPict(img), new Rect(0, 0, 68, 68), new Rect(x, y,
+				x + 68, y + 68), null);
+
+		switch (level) {
+		case 1:
+			img = R.drawable.templeownerl1;
+			break;
+		case 2:
+			img = R.drawable.templeownerl2;
+			break;
+		case 3:
+			img = R.drawable.templeownerl3;
+			break;
+		case 4:
+			img = R.drawable.templeownerl4;
+			break;
+		case 5:
+			img = R.drawable.templeownerl5;
+			break;
+		case 6:
+			img = R.drawable.templeownerl6;
+			break;
+		case 7:
+			img = R.drawable.templeownerl7;
+			break;
+		case 8:
+			img = R.drawable.templeownerl8;
+			break;
+		case 9:
+			img = R.drawable.templeownerl9;
+			break;
+		case 10:
+			img = R.drawable.templeownerl10;
+			break;
+		default:
+			return;
+		}
+
+		c.drawBitmap(getPict(img), new Rect(0, 0, 68, 68), new Rect(x, y,
+				x + 68, y + 68), null);
+	}
+
+	private void drawMostPop(Canvas c, int id, int x, int y) {
+		if (id == -1) {
+			return;
+		}
+
+		x += 49;
+		y += 28;
+		int img = 0;
+		switch (id) {
+		case 0:
+			img = R.drawable.mostpopp1;
+			break;
+		case 1:
+			img = R.drawable.mostpopp2;
+			break;
+		case 2:
+			img = R.drawable.mostpopp3;
+			break;
+		case 3:
+			img = R.drawable.mostpopp4;
+			break;
+		default:
+			break;
+
+		}
 		
-		c.drawBitmap(getPict(img), new Rect(0, 0, 62, 62), new Rect(x, y, x + 62, y
-				+ 62), null);
+		c.drawBitmap(getPict(img), new Rect(0, 0, 62, 62), new Rect(x, y,
+				x + 62, y + 62), null);
 	}
 
 	private void drawStonesN(Canvas c, Tile t, int x, int y) {
 		// N
-		x+=68;
+		x += 68;
 		int id = 0;
 		switch (t.getStonesN()) {
 		case 1:
@@ -255,10 +319,10 @@ public class Drawer {
 				Cnst.STONES_SIZE), new Rect(x, y, x + Cnst.STONES_SIZE, y
 				+ Cnst.STONES_SIZE), null);
 	}
-	
+
 	private void drawStonesNE(Canvas c, Tile t, int x, int y) {
-		x+=115;
-		y+=24;
+		x += 115;
+		y += 24;
 		int id = 0;
 		switch (t.getStonesNE()) {
 		case 1:
@@ -280,8 +344,8 @@ public class Drawer {
 	}
 
 	private void drawStonesSE(Canvas c, Tile t, int x, int y) {
-		x+=115;
-		y+=69;
+		x += 115;
+		y += 69;
 		int id = 0;
 		switch (t.getStonesSE()) {
 		case 1:
@@ -301,10 +365,10 @@ public class Drawer {
 				+ Cnst.STONES_SIZE), null);
 
 	}
-	
+
 	private void drawStonesS(Canvas c, Tile t, int x, int y) {
-		x+=68;
-		y+=93;
+		x += 68;
+		y += 93;
 		int id = 0;
 		switch (t.getStonesS()) {
 		case 1:
@@ -324,10 +388,10 @@ public class Drawer {
 				+ Cnst.STONES_SIZE), null);
 
 	}
-	
+
 	private void drawStonesSW(Canvas c, Tile t, int x, int y) {
-		x+=20;
-		y+=70;
+		x += 20;
+		y += 70;
 		int id = 0;
 		switch (t.getStonesSW()) {
 		case 1:
@@ -347,10 +411,10 @@ public class Drawer {
 				+ Cnst.STONES_SIZE), null);
 
 	}
-	
+
 	private void drawStonesNW(Canvas c, Tile t, int x, int y) {
-		x+=19;
-		y+=23;
+		x += 19;
+		y += 23;
 		int id = 0;
 		switch (t.getStonesNW()) {
 		case 1:
