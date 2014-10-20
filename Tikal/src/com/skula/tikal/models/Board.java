@@ -29,10 +29,14 @@ public class Board {
 
 		tiles[0][1] = new Tile(new Card(1, CardType.TREASURE, 3, 3, 3, 3, 3, 3, 3), nPlayers);
 		tiles[0][2] = new Tile(new Card(1, CardType.TEMPLE, 3, 3, 3, 3, 3, 3, 3), nPlayers);
-		tiles[0][2].setOwnerId(1);
+		tiles[0][2].setOwnerId(0);
 		tiles[0][2].setSettled(true);
 
-		tiles[1][0] = new Tile(new Card(1, CardType.TREASURE, 4, 3, 3, 3, 3, 3, 3), nPlayers);
+		tiles[1][0] = new Tile(new Card(1, CardType.TEMPLE, 4, 3, 3, 3, 3, 3, 3), nPlayers);
+		tiles[1][0].addSpawn(2);
+		tiles[1][0].addSpawn(2);
+		tiles[1][0].addSpawn(2);
+		tiles[1][0].addSpawn(2);
 		/*List<Card> list = Card.getAllCards();
 		int cpt=0;
 		for(int j=0; j<Cnst.ROWS_COUNT; j++){

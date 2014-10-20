@@ -195,12 +195,16 @@ public class Drawer {
 				}
 				c.drawBitmap(getPict(id), new Rect(0, 0, 32, 32), new Rect(x1,
 						y1, x1 + 32, y1 + 32), null);
-				x1 += 5;
+				if(nb<10){
+					x1 += 10;			
+				}else{
+					x1 += 5;
+				}
 				y1 += 23;
 				paint.setTextSize(20f);
 				paint.setStyle(Style.FILL);
 				paint.setColor(Color.YELLOW);
-				c.drawText("10", x1, y1, paint);
+				c.drawText(nb + "", x1, y1, paint);
 			}
 		}
 	}
@@ -273,8 +277,8 @@ public class Drawer {
 			return;
 		}
 
-		x += 49;
-		y += 28;
+		x += 52;
+		y += 30;
 		int img = 0;
 		switch (id) {
 		case 0:
@@ -513,7 +517,7 @@ public class Drawer {
 	}
 
 	private void drawAction(Canvas canvas, Rect rect) {
-		canvas.drawBitmap(getPict(R.drawable.action), new Rect(0, 0, 80, 80),
+		canvas.drawBitmap(getPict(R.drawable.actionswapmed), new Rect(0, 0, 80, 80),
 				rect, null);
 	}
 
