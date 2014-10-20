@@ -27,10 +27,6 @@ public class GameEngine {
 	private int xDest;
 	private int yDest;
 
-	public static void main(String[] args) {
-		GameEngine ge = new GameEngine(2);
-	}
-
 	public GameEngine(int nPlayers) {
 		this.nPlayers = nPlayers;
 		this.players = new Player[nPlayers];
@@ -52,6 +48,20 @@ public class GameEngine {
 
 		this.token = 0;
 		this.actpntLeft = 10;
+		
+		mock();
+	}
+	
+	private void mock(){
+		actions.add(0);
+		actions.add(2);
+		actions.add(4);
+		actions.add(5);
+		actions.add(6);
+		actions.add(7);
+
+		actions.add(9);
+		actions.add(10);
 	}
 
 	public void nextPlayer() {

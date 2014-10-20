@@ -26,6 +26,11 @@ public class Cnst {
 	public static final int ACTION_DIG = 6;
 	public static final int ACTION_BUILD_CAMP = 7;
 	public static final int ACTION_SWAP_MEDALLIONS = 8;
+	public static final int ACTION_PUT_CARD = 9;
+	public static final int ACTION_TURN_LEFT = 10;
+	public static final int ACTION_TURN_RIGHT = 11;
+	public static final int ACTION_CHANGE_CAMP_SPAWN = 12;
+	public static final int ACTION_CHANGE_CAMP_LEADER = 13;
 
 	public static final int ACTION_ADD_SPAWN_POINTS = 1;
 	public static final int ACTION_ADD_LEADER_POINTS = 1;

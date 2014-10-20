@@ -1,5 +1,6 @@
 package com.skula.tikal.services;
 
+import java.util.List;
 import java.util.Map;
 
 import android.content.res.Resources;
@@ -41,7 +42,8 @@ public class Drawer {
 		c.drawText("10 PA", 1100, 330, paint);
 
 		// actions
-		y = 360;
+		drawActions(c, engine.getActions());
+		/*y = 360;
 		paint.setColor(Color.BLUE);
 		for (int i = 0; i < 4; i++) {
 			// c.drawRect(new Rect(x, y+i*dy, x + size, y+i*dy + size), paint);
@@ -51,7 +53,7 @@ public class Drawer {
 		for (int i = 0; i < 4; i++) {
 			// c.drawRect(new Rect(x, y+i*dy, x + size, y+i*dy + size), paint);
 			drawAction(c, new Rect(x, y + i * dy, x + size, y + i * dy + size));
-		}
+		}*/
 
 		// scores + etat des joueurs
 		x = 1080;
@@ -74,6 +76,81 @@ public class Drawer {
 			c.drawText("^", x + 130, y + i * dy + 60, paint);
 		}
 
+	}
+	
+	private void drawActions(Canvas c, List<Integer> actions){
+		int x = 1180;
+		int dy = 95;
+		int size = 80;
+		int y = 360;
+		int id = 0;
+		paint.setColor(Color.BLUE);
+		
+		for(int cpt=0; cpt<actions.size(); cpt++){
+			if(cpt%2==0){
+				x = 1085;
+			}else{
+				x = 1180;
+			}
+			
+			switch(actions.get(cpt)){
+			case Cnst.ACTION_ADD_LEADER:
+				id=0;
+				break;
+			case Cnst.ACTION_ADD_SPAWN:
+				id = R.drawable.actionaddspawn;
+				break;
+			case Cnst.ACTION_MOVE_LEADER:
+				id=0;
+				break;
+			case Cnst.ACTION_MOVE_SPAWN:
+				id = R.drawable.actionmove;
+				break;
+			case Cnst.ACTION_DIG:
+				id = R.drawable.actiondig;
+				break;
+			case Cnst.ACTION_CLEAN_TEMPLE:
+				id = R.drawable.actionupgrade;
+				break;
+			case Cnst.ACTION_BUILD_CAMP:
+				id = R.drawable.actioncamp;
+				break;
+			case Cnst.ACTION_OWN_TEMPLE:
+				id = R.drawable.actiontaketemple;
+				break;
+			case Cnst.ACTION_SWAP_MEDALLIONS:
+				id = R.drawable.actionswapmed;
+				break;
+			case Cnst.ACTION_PUT_CARD:
+				id = R.drawable.actionaddcard;
+				break;
+			case Cnst.ACTION_TURN_LEFT:
+				id = R.drawable.actionturnleft;
+				break;
+			case Cnst.ACTION_TURN_RIGHT:
+				id = R.drawable.actionturnright;
+				break;
+			case Cnst.ACTION_CHANGE_CAMP_SPAWN:
+				id = 0;
+				break;
+			case Cnst.ACTION_CHANGE_CAMP_LEADER:
+				id = 0;
+				break;
+			default:
+				id = 0;
+				break;
+			}
+			if(id!=0){
+				drawAction(c, id,  new Rect(x, y + cpt/2 * dy, x + size, y + cpt/2 * dy + size));
+			}
+		}
+		/*for (int i = 0; i < 4; i++) {
+			drawAction(c, new Rect(x, y + i * dy, x + size, y + i * dy + size));
+		}
+		x = 1085;
+		for (int i = 0; i < 4; i++) {
+			drawAction(c, new Rect(x, y + i * dy, x + size, y + i * dy + size));
+		}*/
 	}
 
 	private void drawTiles(Canvas c, Tile[][] tiles) {
@@ -516,8 +593,8 @@ public class Drawer {
 		canvas.drawBitmap(getPict(id), new Rect(0, 0, 80, 80), rect, null);
 	}
 
-	private void drawAction(Canvas canvas, Rect rect) {
-		canvas.drawBitmap(getPict(R.drawable.actionswapmed), new Rect(0, 0, 80, 80),
+	private void drawAction(Canvas canvas, int id, Rect rect) {
+		canvas.drawBitmap(getPict(id), new Rect(0, 0, 80, 80),
 				rect, null);
 	}
 
