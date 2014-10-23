@@ -1,5 +1,7 @@
 package com.skula.tikal.models;
 
+import java.util.List;
+
 import com.skula.tikal.constantes.Cnst;
 import com.skula.tikal.enums.CardType;
 import com.skula.tikal.enums.Direction;
@@ -21,30 +23,20 @@ public class Board {
 	}
 	
 	private void mock(){
-		tiles[0][0] = new Tile(new Card(1, CardType.TREASURE, 1, 1, 1, 1, 1, 1, 1), nPlayers);
-		tiles[0][0].addSpawn(0);
-		tiles[0][0].addSpawn(1);
-		tiles[0][0].addSpawn(2);
-		tiles[0][0].addSpawn(3);
-
-		tiles[0][1] = new Tile(new Card(1, CardType.TREASURE, 3, 3, 3, 3, 3, 3, 3), nPlayers);
-		tiles[0][2] = new Tile(new Card(1, CardType.TEMPLE, 3, 3, 3, 3, 3, 3, 3), nPlayers);
-		tiles[0][2].setOwnerId(0);
-		tiles[0][2].setSettled(true);
-
-		tiles[1][0] = new Tile(new Card(1, CardType.TEMPLE, 4, 3, 3, 3, 3, 3, 3), nPlayers);
-		tiles[1][0].addSpawn(2);
-		tiles[1][0].addSpawn(2);
-		tiles[1][0].addSpawn(2);
-		tiles[1][0].addSpawn(2);
-		/*List<Card> list = Card.getAllCards();
-		int cpt=0;
+		List<Card> cards = Card.getAllCards();
+		int cpt = 0;
+		
 		for(int j=0; j<Cnst.ROWS_COUNT; j++){
-			for(int i=0; i<7; i++){
-				tiles[i][j] = new Tile(list.remove(cpt), nPlayers);
-				//cpt++;
+			for(int i=0; i<Cnst.COLUMNS_COUNT; i++){
+				if((i==0 && j==4) || (i==0 && j==3) || (i==1 && j==3) || (i==1 && j==4)){
+					
+					
+				}else{
+					tiles[i][j] = new Tile(cards.get(cpt),1); 
+					cpt++;
+				}
 			}
-		}*/
+		}
 	}
 
 	// a faire et a tester
