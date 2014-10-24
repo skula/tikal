@@ -14,57 +14,95 @@ import android.graphics.Rect;
 
 import com.skula.tikal.R;
 import com.skula.tikal.constantes.Cnst;
+import com.skula.tikal.models.Player;
 import com.skula.tikal.models.Tile;
 
 public class Drawer {
 	private Paint paint;
 	private Resources res;
 	private GameEngine engine;
+	private String message;
 
 	public Drawer(Resources res, GameEngine engine) {
 		this.res = res;
 		this.paint = new Paint();
 		this.engine = engine;
+		this.message = "";
 	}
 
 	public void draw(Canvas c) {
+		// arriere plan
 		drawBackground(c);
+		
+		//tuiles
 		drawTiles(c, engine.getBoard().getTiles());
-
-		int x = 1180;
-		int dy = 95;
-		int y = 350;
-		int size = 80;
+		//drawGrid(c);
 
 		// points d'action
-		paint.setColor(Color.BLACK);
-		paint.setTextSize(35f);
-		c.drawText("10 PA", 1100, 330, paint);
+		drawPA(c, 10);
 
 		// actions
 		drawActions(c, engine.getActions());
-		/*y = 360;
-		paint.setColor(Color.BLUE);
-		for (int i = 0; i < 4; i++) {
-			// c.drawRect(new Rect(x, y+i*dy, x + size, y+i*dy + size), paint);
-			drawAction(c, new Rect(x, y + i * dy, x + size, y + i * dy + size));
-		}
-		x = 1085;
-		for (int i = 0; i < 4; i++) {
-			// c.drawRect(new Rect(x, y+i*dy, x + size, y+i*dy + size), paint);
-			drawAction(c, new Rect(x, y + i * dy, x + size, y + i * dy + size));
-		}*/
-
+		
 		// scores + etat des joueurs
-		x = 1080;
-		y = 5;
-		dy = 70;
+		drawScores(c, engine.getPlayers());
+		
+		// message
+		paint.setColor(Color.RED);
+		if(engine.isSrcSelected()){
+			c.drawText("(" + engine.getXSrc() + ", " + engine.getYSrc() + ")", 180, 70, paint);
+		}else{
+			c.drawText("null", 180, 70, paint);
+		}
+	}
+	
+	private void drawPA(Canvas c, int n){
+		paint.setColor(Color.BLACK);
+		paint.setTextSize(35f);
+		c.drawText(n + " PA", 1100, 330, paint);
+	}
+	
+	private void drawScores(Canvas c, Player[] players){
+		int x = 1080;
+		int y = 5;
+		int dy = 70;
 		int xsize = 190;
 		int ysize = 60;
+		int i = 0;
+		int id = 0;
+		for (Player p : players) {
+			switch(p.getId()){
+			case 0:
+				id = R.drawable.score;
+				break;
+			case 1:
+				id = R.drawable.score;
+				break;
+			case 2:
+				id = R.drawable.score;
+				break;
+			case 3:
+				id = R.drawable.score;
+				break;
+			default:
+				break;
+			
+			}
+			drawScore(c, id, new Rect(x, y + i * dy, x + xsize, y + i * dy + ysize));
+			
+			paint.setColor(Color.BLACK);
+			paint.setTextSize(25f);
+			// paint.setStrokeWidth(5);
+			c.drawText("1000 pts", x + 15, y + i * dy + 27, paint);
+			c.drawText("9", x + 15, y + i * dy + 52, paint);
+			paint.setTextSize(60f);
+			c.drawText("^", x + 130, y + i * dy + 60, paint);
+			i++;
+		}
+		
+		/*
 		for (int i = 0; i < 4; i++) {
 			paint.setColor(Color.GREEN);
-			// c.drawRect(new Rect(x, y+i*dy, x + xsize, y+i*dy + ysize),
-			// paint);
 			drawScore(c, new Rect(x, y + i * dy, x + xsize, y + i * dy + ysize));
 			paint.setColor(Color.BLACK);
 
@@ -74,8 +112,7 @@ public class Drawer {
 			c.drawText("9", x + 15, y + i * dy + 52, paint);
 			paint.setTextSize(60f);
 			c.drawText("^", x + 130, y + i * dy + 60, paint);
-		}
-
+		}*/		
 	}
 	
 	private void drawActions(Canvas c, List<Integer> actions){
@@ -144,13 +181,33 @@ public class Drawer {
 				drawAction(c, id,  new Rect(x, y + cpt/2 * dy, x + size, y + cpt/2 * dy + size));
 			}
 		}
-		/*for (int i = 0; i < 4; i++) {
-			drawAction(c, new Rect(x, y + i * dy, x + size, y + i * dy + size));
+	}
+	
+	private void drawGrid(Canvas c) {
+		paint.setStyle(Paint.Style.STROKE);
+		int x = Cnst.TILE_WIDTH + 25;
+		int y = 0;
+		int yEcart = 63;
+		int xEcart = 42;
+		int dx= 30;
+
+		for (int j = 0; j < Cnst.ROWS_COUNT; j++) {
+			for (int i = 0; i < Cnst.COLUMNS_COUNT; i++) {
+				x = Cnst.TILE_WIDTH * i + 25;
+				if (i > 0) {
+					x -= xEcart * i;
+				}
+				x -= 1;
+				if (i % 2 == 0) { // col haute
+					y = Cnst.TILE_HIGHT * j;
+				} else {
+					y = Cnst.TILE_HIGHT * j + yEcart;
+				}
+				y += 25 - 1;
+				Rect  r = new Rect(x+dx, y, x-dx + Cnst.TILE_WIDTH + 1, y + Cnst.TILE_HIGHT);
+				c.drawRect(r, paint);
+			}
 		}
-		x = 1085;
-		for (int i = 0; i < 4; i++) {
-			drawAction(c, new Rect(x, y + i * dy, x + size, y + i * dy + size));
-		}*/
 	}
 
 	private void drawTiles(Canvas c, Tile[][] tiles) {
@@ -178,7 +235,7 @@ public class Drawer {
 			}
 		}
 	}
-
+	
 	private void drawTile(Canvas c, Tile t, int x, int y) {
 		// tuile
 		if (t.isVolcano()) {
@@ -598,12 +655,16 @@ public class Drawer {
 				rect, null);
 	}
 
-	private void drawScore(Canvas canvas, Rect rect) {
-		canvas.drawBitmap(getPict(R.drawable.score), new Rect(0, 0, 190, 60),
+	private void drawScore(Canvas canvas, int id, Rect rect) {
+		canvas.drawBitmap(getPict(id), new Rect(0, 0, 190, 60),
 				rect, null);
 	}
 
 	private Bitmap getPict(int id) {
 		return BitmapFactory.decodeStream(res.openRawResource(id));
+	}
+	
+	public void setMessage(String message){
+		this.message=message;
 	}
 }

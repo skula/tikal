@@ -214,8 +214,42 @@ public class GameEngine {
 			break;
 		}
 	}
-
+	
 	/****************************/
+	public void setSrc(int x, int y){
+		this.xSrc = x;
+		this.ySrc = y;
+	}
+	
+	public void setDest(int x, int y){
+		this.xDest = x;
+		this.yDest = y;	
+	}
+	
+	public boolean isSrcSelected(){
+		return xSrc !=-1 && ySrc != -1;
+	}
+	
+	public boolean isDestSelected(){
+		return xDest !=-1 && yDest != -1;
+	}
+	
+	public int getXSrc(){
+		return xSrc;
+	}
+	
+	public int getYSrc(){
+		return ySrc;
+	}
+	
+	public int getXDest(){
+		return xDest;
+	}
+	
+	public int getYDest(){
+		return yDest;
+	}
+	
 	public int getnPlayers() {
 		return nPlayers;
 	}
