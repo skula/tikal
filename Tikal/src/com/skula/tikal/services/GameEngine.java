@@ -127,8 +127,21 @@ public class GameEngine {
 		}
 		return res;
 	}
+	
+	public void handleClick() {
+		if(isDestSelected()){
+			actions.clear();
+		}else{
+			if(isSrcSelected()){
+				actions.clear();
+				setActions(token, xSrc, ySrc);
+			}else{
+				actions.clear();
+			}
+		}
+	}
 
-	public void getChoices(int playerId, int x, int y) {
+	public void setActions(int playerId, int x, int y) {
 		Tile t = board.getTile(x, y);
 		// ajouter pions et chef
 		if (actpntLeft >= Cnst.ACTION_ADD_SPAWN_POINTS

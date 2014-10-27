@@ -44,12 +44,38 @@ public class BoardView extends View {
 				Rect  r = new Rect(x+dx, y, x-dx + Cnst.TILE_WIDTH + 1, y + Cnst.TILE_HIGHT);
 				if(r.contains(mx, my)){
 					engine.setSrc(i,j);
+					drawer.setMessage("(" + i + ", " + j + ")");
 					return;
 				}
 			}
 		}
-		
+		drawer.setMessage("null");
 		engine.setSrc(-1,-1);
+	}
+	
+	private int getAction(int mx, int my) {	
+		int x = 1180;
+		int dy = 95;
+		int size = 80;
+		int y = 360;
+		int id = 0;
+		Rect r = null;
+		for(int cpt=0; cpt<8; cpt++){
+			if(cpt%2==0){
+				x = 1085;
+			}else{
+				x = 1180;
+			}
+			
+			r = new Rect(x, y + cpt/2 * dy, x + size, y + cpt/2 * dy + size);
+			if(r.contains(mx,my)){
+				drawer.setMessage(cpt+"");
+				return cpt;
+			}
+		}
+		
+		drawer.setMessage("null");
+		return -1;
 	}
 
 	@Override
@@ -65,7 +91,13 @@ public class BoardView extends View {
 
 			break;
 		case MotionEvent.ACTION_UP:
-			getTile(x,y);
+			int a = getAction(x, y);
+			if(a!=-1){
+				
+			}else{
+				getTile(x, y);
+				engine.handleClick();	
+			}
 			invalidate();
 			break;
 		}

@@ -14,6 +14,7 @@ import android.graphics.Rect;
 
 import com.skula.tikal.R;
 import com.skula.tikal.constantes.Cnst;
+import com.skula.tikal.constantes.PictureLibrary;
 import com.skula.tikal.models.Player;
 import com.skula.tikal.models.Tile;
 
@@ -21,12 +22,14 @@ public class Drawer {
 	private Paint paint;
 	private Resources res;
 	private GameEngine engine;
+	private PictureLibrary lib;
 	private String message;
 
 	public Drawer(Resources res, GameEngine engine) {
 		this.res = res;
 		this.paint = new Paint();
 		this.engine = engine;
+		this.lib = new PictureLibrary(res);
 		this.message = "";
 	}
 
@@ -39,7 +42,7 @@ public class Drawer {
 		//drawGrid(c);
 
 		// points d'action
-		drawPA(c, 10);
+		drawPA(c, engine.getActpntLeft());
 
 		// actions
 		drawActions(c, engine.getActions());
@@ -50,9 +53,7 @@ public class Drawer {
 		// message
 		paint.setColor(Color.RED);
 		if(engine.isSrcSelected()){
-			c.drawText("(" + engine.getXSrc() + ", " + engine.getYSrc() + ")", 180, 70, paint);
-		}else{
-			c.drawText("null", 180, 70, paint);
+			c.drawText(message, 180, 70, paint);
 		}
 	}
 	
@@ -99,20 +100,6 @@ public class Drawer {
 			c.drawText("^", x + 130, y + i * dy + 60, paint);
 			i++;
 		}
-		
-		/*
-		for (int i = 0; i < 4; i++) {
-			paint.setColor(Color.GREEN);
-			drawScore(c, new Rect(x, y + i * dy, x + xsize, y + i * dy + ysize));
-			paint.setColor(Color.BLACK);
-
-			paint.setTextSize(25f);
-			// paint.setStrokeWidth(5);
-			c.drawText("1000 pts", x + 15, y + i * dy + 27, paint);
-			c.drawText("9", x + 15, y + i * dy + 52, paint);
-			paint.setTextSize(60f);
-			c.drawText("^", x + 130, y + i * dy + 60, paint);
-		}*/		
 	}
 	
 	private void drawActions(Canvas c, List<Integer> actions){
@@ -247,7 +234,7 @@ public class Drawer {
 			return;
 		} else {
 			// tuile jungle
-			c.drawBitmap(getPict(R.drawable.tile), new Rect(0, 0,
+			c.drawBitmap(lib.get(R.drawable.tile), new Rect(0, 0,
 					Cnst.TILE_WIDTH, Cnst.TILE_HIGHT), new Rect(x, y, x
 					+ Cnst.TILE_WIDTH + 1, y + Cnst.TILE_HIGHT), null);
 		}
@@ -327,7 +314,7 @@ public class Drawer {
 				default:
 					break;
 				}
-				c.drawBitmap(getPict(id), new Rect(0, 0, 32, 32), new Rect(x1,
+				c.drawBitmap(lib.get(id), new Rect(0, 0, 32, 32), new Rect(x1,
 						y1, x1 + 32, y1 + 32), null);
 				if(nb<10){
 					x1 += 10;			
@@ -364,7 +351,7 @@ public class Drawer {
 			break;
 		}
 
-		c.drawBitmap(getPict(img), new Rect(0, 0, 68, 68), new Rect(x, y,
+		c.drawBitmap(lib.get(img), new Rect(0, 0, 68, 68), new Rect(x, y,
 				x + 68, y + 68), null);
 
 		switch (level) {
@@ -402,7 +389,7 @@ public class Drawer {
 			return;
 		}
 
-		c.drawBitmap(getPict(img), new Rect(0, 0, 68, 68), new Rect(x, y,
+		c.drawBitmap(lib.get(img), new Rect(0, 0, 68, 68), new Rect(x, y,
 				x + 68, y + 68), null);
 	}
 
@@ -432,7 +419,7 @@ public class Drawer {
 
 		}
 		
-		c.drawBitmap(getPict(img), new Rect(0, 0, 62, 62), new Rect(x, y,
+		c.drawBitmap(lib.get(img), new Rect(0, 0, 62, 62), new Rect(x, y,
 				x + 62, y + 62), null);
 	}
 
@@ -453,7 +440,7 @@ public class Drawer {
 		default:
 			break;
 		}
-		c.drawBitmap(getPict(id), new Rect(0, 0, Cnst.STONES_SIZE,
+		c.drawBitmap(lib.get(id), new Rect(0, 0, Cnst.STONES_SIZE,
 				Cnst.STONES_SIZE), new Rect(x, y, x + Cnst.STONES_SIZE, y
 				+ Cnst.STONES_SIZE), null);
 	}
@@ -475,7 +462,7 @@ public class Drawer {
 		default:
 			break;
 		}
-		c.drawBitmap(getPict(id), new Rect(0, 0, Cnst.STONES_SIZE,
+		c.drawBitmap(lib.get(id), new Rect(0, 0, Cnst.STONES_SIZE,
 				Cnst.STONES_SIZE), new Rect(x, y, x + Cnst.STONES_SIZE, y
 				+ Cnst.STONES_SIZE), null);
 
@@ -498,7 +485,7 @@ public class Drawer {
 		default:
 			break;
 		}
-		c.drawBitmap(getPict(id), new Rect(0, 0, Cnst.STONES_SIZE,
+		c.drawBitmap(lib.get(id), new Rect(0, 0, Cnst.STONES_SIZE,
 				Cnst.STONES_SIZE), new Rect(x, y, x + Cnst.STONES_SIZE, y
 				+ Cnst.STONES_SIZE), null);
 
@@ -521,7 +508,7 @@ public class Drawer {
 		default:
 			break;
 		}
-		c.drawBitmap(getPict(id), new Rect(0, 0, Cnst.STONES_SIZE,
+		c.drawBitmap(lib.get(id), new Rect(0, 0, Cnst.STONES_SIZE,
 				Cnst.STONES_SIZE), new Rect(x, y, x + Cnst.STONES_SIZE, y
 				+ Cnst.STONES_SIZE), null);
 
@@ -544,7 +531,7 @@ public class Drawer {
 		default:
 			break;
 		}
-		c.drawBitmap(getPict(id), new Rect(0, 0, Cnst.STONES_SIZE,
+		c.drawBitmap(lib.get(id), new Rect(0, 0, Cnst.STONES_SIZE,
 				Cnst.STONES_SIZE), new Rect(x, y, x + Cnst.STONES_SIZE, y
 				+ Cnst.STONES_SIZE), null);
 
@@ -568,7 +555,7 @@ public class Drawer {
 			break;
 		}
 
-		c.drawBitmap(getPict(id), new Rect(0, 0, Cnst.STONES_SIZE,
+		c.drawBitmap(lib.get(id), new Rect(0, 0, Cnst.STONES_SIZE,
 				Cnst.STONES_SIZE), new Rect(x, y, x + Cnst.STONES_SIZE, y
 				+ Cnst.STONES_SIZE), null);
 	}
@@ -611,7 +598,7 @@ public class Drawer {
 		default:
 			return;
 		}
-		c.drawBitmap(getPict(id), new Rect(0, 0, Cnst.TEMPLE_SIZE,
+		c.drawBitmap(lib.get(id), new Rect(0, 0, Cnst.TEMPLE_SIZE,
 				Cnst.TEMPLE_SIZE), new Rect(x, y, x + Cnst.TEMPLE_SIZE, y
 				+ Cnst.TEMPLE_SIZE), null);
 	}
@@ -636,12 +623,31 @@ public class Drawer {
 		default:
 			break;
 		}
-		c.drawBitmap(getPict(id), new Rect(0, 0, Cnst.TRESOR_SIZE,
+		c.drawBitmap(lib.get(id), new Rect(0, 0, Cnst.TRESOR_SIZE,
 				Cnst.TRESOR_SIZE), new Rect(x, y, x + Cnst.TRESOR_SIZE, y
 				+ Cnst.TRESOR_SIZE), null);
 	}
 
 	private void drawBackground(Canvas canvas) {
+		canvas.drawBitmap(lib.get(R.drawable.background), new Rect(0, 0, 1280,
+				736), new Rect(0, 0, 1280, 736), null);
+	}
+
+	private void drawTreasor(Canvas canvas, Rect rect, int id) {
+		canvas.drawBitmap(lib.get(id), new Rect(0, 0, 80, 80), rect, null);
+	}
+
+	private void drawAction(Canvas canvas, int id, Rect rect) {
+		canvas.drawBitmap(lib.get(id), new Rect(0, 0, 80, 80),
+				rect, null);
+	}
+
+	private void drawScore(Canvas canvas, int id, Rect rect) {
+		canvas.drawBitmap(lib.get(id), new Rect(0, 0, 190, 60),
+				rect, null);
+	}
+	
+	/*private void drawBackground(Canvas canvas) {
 		canvas.drawBitmap(getPict(R.drawable.background), new Rect(0, 0, 1280,
 				736), new Rect(0, 0, 1280, 736), null);
 	}
@@ -658,7 +664,7 @@ public class Drawer {
 	private void drawScore(Canvas canvas, int id, Rect rect) {
 		canvas.drawBitmap(getPict(id), new Rect(0, 0, 190, 60),
 				rect, null);
-	}
+	}*/
 
 	private Bitmap getPict(int id) {
 		return BitmapFactory.decodeStream(res.openRawResource(id));
@@ -667,4 +673,5 @@ public class Drawer {
 	public void setMessage(String message){
 		this.message=message;
 	}
+	
 }
