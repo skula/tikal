@@ -12,14 +12,11 @@ public class Player {
 	private int score;
 	private int templesOwned;
 
-	public static void main(String[] args) {
-
-	}
-
 	public Player(int id) {
 		this.id = id;
 		this.score = 0;
 		this.medallions = new HashMap<Integer, Integer>();
+		this.spawnLeft = 10;
 	}
 
 	public void addPoints(int n) {

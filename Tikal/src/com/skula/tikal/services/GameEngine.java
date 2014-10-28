@@ -144,8 +144,8 @@ public class GameEngine {
 	public void setActions(int playerId, int x, int y) {
 		Tile t = board.getTile(x, y);
 		// ajouter pions et chef
-		if (actpntLeft >= Cnst.ACTION_ADD_SPAWN_POINTS
-				&& board.hasCamp(playerId, x, y)) {
+		if (actpntLeft >= Cnst.ACTION_ADD_SPAWN_POINTS && players[playerId].getSpawnLeft()>0
+				&& (board.hasCamp(playerId, x, y) || x==0 && y==4)) {
 			// ajouter pions
 			if (players[playerId].getSpawnLeft() > 0) {
 				actions.add(Cnst.ACTION_ADD_SPAWN);
@@ -156,6 +156,7 @@ public class GameEngine {
 				actions.add(Cnst.ACTION_ADD_LEADER);
 			}
 		}
+		
 
 		// deplacer pion vers un autre camp
 
@@ -179,7 +180,7 @@ public class GameEngine {
 		}
 
 		// creuser
-		if (actpntLeft >= Cnst.ACTION_DIG_POINTS && t.isTreasure()) {
+		if (t.hasSpawn(playerId) && actpntLeft >= Cnst.ACTION_DIG_POINTS && t.isTreasure()) {
 			actions.add(Cnst.ACTION_DIG);
 		}
 
@@ -190,7 +191,7 @@ public class GameEngine {
 		}
 
 		// construire camp
-		if (actpntLeft >= Cnst.ACTION_BUILD_CAMP_POINTS && t.isJungle()
+		if (t.hasSpawn(playerId) && actpntLeft >= Cnst.ACTION_BUILD_CAMP_POINTS && t.isJungle()
 				&& !t.isSettled()) {
 			actions.add(Cnst.ACTION_BUILD_CAMP);
 		}
