@@ -62,7 +62,7 @@ public class Drawer {
 	}
 	
 	private void drawPA(Canvas c, int n){
-		paint.setColor(Color.BLACK);
+		paint.setColor(Color.YELLOW);
 		paint.setTextSize(35f);
 		c.drawText(n + " PA", 1100, 330, paint);
 	}
