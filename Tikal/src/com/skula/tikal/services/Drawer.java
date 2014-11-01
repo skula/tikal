@@ -55,6 +55,7 @@ public class Drawer {
 		
 		// message
 		paint.setColor(Color.RED);
+		paint.setTextSize(40f);
 		if(engine.isSrcSelected()){
 			c.drawText(message, 180, 70, paint);
 		}
@@ -77,16 +78,16 @@ public class Drawer {
 		for (Player p : players) {
 			switch(p.getId()){
 			case 0:
-				id = R.drawable.score;
+				id = R.drawable.scorep1;
 				break;
 			case 1:
-				id = R.drawable.score;
+				id = R.drawable.scorep2;
 				break;
 			case 2:
-				id = R.drawable.score;
+				id = R.drawable.scorep3;
 				break;
 			case 3:
-				id = R.drawable.score;
+				id = R.drawable.scorep4;
 				break;
 			default:
 				break;
@@ -94,13 +95,14 @@ public class Drawer {
 			}
 			drawScore(c, id, new Rect(x, y + i * dy, x + xsize, y + i * dy + ysize));
 			
-			paint.setColor(Color.BLACK);
+			paint.setColor(Color.YELLOW);
 			paint.setTextSize(25f);
 			// paint.setStrokeWidth(5);
-			c.drawText("1000 pts", x + 15, y + i * dy + 27, paint);
-			c.drawText("9", x + 15, y + i * dy + 52, paint);
-			paint.setTextSize(60f);
-			c.drawText("^", x + 130, y + i * dy + 60, paint);
+			c.drawText("1000", x + 40, y + i * dy + 27, paint);
+			c.drawText("9", x + 40, y + i * dy + 52, paint);
+			c.drawBitmap(lib.get(R.drawable.leaderlogo), new Rect(0, 0, 48, 48), new Rect(x + 130, y + 7 + i * dy,
+					x + 130 + 48, y + 7 + i * dy + 48), null);
+			//c.drawText("^", x + 130, y + i * dy + 60, paint);
 			i++;
 		}
 	}
@@ -128,10 +130,10 @@ public class Drawer {
 				id = R.drawable.actionaddspawn;
 				break;
 			case Cnst.ACTION_MOVE_LEADER:
-				id=0;
+				id = R.drawable.actionmoveleader;
 				break;
 			case Cnst.ACTION_MOVE_SPAWN:
-				id = R.drawable.actionmove;
+				id = R.drawable.actionmovespawn;
 				break;
 			case Cnst.ACTION_DIG:
 				id = R.drawable.actiondig;

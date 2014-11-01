@@ -18,7 +18,8 @@ public class PictureLibrary{
 		this.map.put(R.drawable.actionaddspawn, 	BitmapFactory.decodeResource(res, R.drawable.actionaddspawn));
 		this.map.put(R.drawable.actioncamp, 		BitmapFactory.decodeResource(res, R.drawable.actioncamp));
 		this.map.put(R.drawable.actiondig, 			BitmapFactory.decodeResource(res, R.drawable.actiondig));
-		this.map.put(R.drawable.actionmove, 		BitmapFactory.decodeResource(res, R.drawable.actionmove));
+		this.map.put(R.drawable.actionmovespawn, 		BitmapFactory.decodeResource(res, R.drawable.actionmovespawn));
+		this.map.put(R.drawable.actionmoveleader, 		BitmapFactory.decodeResource(res, R.drawable.actionmoveleader));
 		this.map.put(R.drawable.actionswapmed, 		BitmapFactory.decodeResource(res, R.drawable.actionswapmed));
 		this.map.put(R.drawable.actiontaketemple,	BitmapFactory.decodeResource(res, R.drawable.actiontaketemple));
 		this.map.put(R.drawable.actionturnleft, 	BitmapFactory.decodeResource(res, R.drawable.actionturnleft));
@@ -29,7 +30,10 @@ public class PictureLibrary{
 		this.map.put(R.drawable.mostpopp2, 			BitmapFactory.decodeResource(res, R.drawable.mostpopp2));
 		this.map.put(R.drawable.mostpopp3, 			BitmapFactory.decodeResource(res, R.drawable.mostpopp3));
 		this.map.put(R.drawable.mostpopp4, 			BitmapFactory.decodeResource(res, R.drawable.mostpopp4));
-		this.map.put(R.drawable.score, 				BitmapFactory.decodeResource(res, R.drawable.score));
+		this.map.put(R.drawable.scorep1, 				BitmapFactory.decodeResource(res, R.drawable.scorep1));
+		this.map.put(R.drawable.scorep2, 				BitmapFactory.decodeResource(res, R.drawable.scorep2));
+		this.map.put(R.drawable.scorep3, 				BitmapFactory.decodeResource(res, R.drawable.scorep3));
+		this.map.put(R.drawable.scorep4, 				BitmapFactory.decodeResource(res, R.drawable.scorep4));
 		this.map.put(R.drawable.spawnsp1, 			BitmapFactory.decodeResource(res, R.drawable.spawnsp1));
 		this.map.put(R.drawable.spawnsp2, 			BitmapFactory.decodeResource(res, R.drawable.spawnsp2));
 		this.map.put(R.drawable.spawnsp3, 			BitmapFactory.decodeResource(res, R.drawable.spawnsp3));
@@ -84,6 +88,8 @@ public class PictureLibrary{
 		this.map.put(R.drawable.leaderp1, 			BitmapFactory.decodeResource(res, R.drawable.leaderp1));
 		this.map.put(R.drawable.leaderp2, 			BitmapFactory.decodeResource(res, R.drawable.leaderp2));
 		this.map.put(R.drawable.leaderp3, 			BitmapFactory.decodeResource(res, R.drawable.leaderp3));
+		this.map.put(R.drawable.leaderp4, 			BitmapFactory.decodeResource(res, R.drawable.leaderp4));
+		this.map.put(R.drawable.leaderlogo, 			BitmapFactory.decodeResource(res, R.drawable.leaderlogo));
 		this.map.put(R.drawable.leaderp4, 			BitmapFactory.decodeResource(res, R.drawable.leaderp4));
 	}
 		
