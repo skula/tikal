@@ -34,13 +34,16 @@ public class Drawer {
 	}
 
 	public void draw(Canvas c) {
+		/** carte **/
 		// arriere plan
 		drawBackground(c);
 		
 		//tuiles
 		drawTiles(c, engine.getBoard().getTiles());
 		//drawGrid(c);
+		drawSpawnsAndLeaders(c, engine.getBoard().getTiles());
 
+		/** panneau de droite **/
 		// points d'action
 		drawPA(c, engine.getActpntLeft());
 
@@ -223,6 +226,35 @@ public class Drawer {
 		}
 	}
 	
+	private void drawSpawnsAndLeaders(Canvas c, Tile[][] tiles) {
+		int x = Cnst.TILE_WIDTH + 25;
+		int y = 0;
+		int yEcart = 63;
+		int xEcart = 42;
+
+		for (int j = 0; j < Cnst.ROWS_COUNT; j++) {
+			for (int i = 0; i < Cnst.COLUMNS_COUNT; i++) {
+				if (tiles[i][j] != null) {
+					x = Cnst.TILE_WIDTH * i + 25;
+					if (i > 0) {
+						x -= xEcart * i;
+					}
+					x -= 1;
+					if (i % 2 == 0) { // col haute
+						y = Cnst.TILE_HIGHT * j;
+					} else {
+						y = Cnst.TILE_HIGHT * j + yEcart;
+					}
+					y += 25 - 1;
+					// leader
+					drawLeaders(c, tiles[i][j].getLeaders(), x, y);
+					// pions
+					drawSpawns(c, tiles[i][j].getSpawns(), x, y);
+				}
+			}
+		}
+	}
+	
 	private void drawTile(Canvas c, Tile t, int x, int y) {
 		// tuile
 		if (t.isVolcano()) {
@@ -276,10 +308,7 @@ public class Drawer {
 
 		// camp
 
-		// pions
-		drawSpawns(c, t.getSpawns(), x, y);
-
-		// leader
+		
 
 	}
 
@@ -327,6 +356,42 @@ public class Drawer {
 				paint.setColor(Color.YELLOW);
 				c.drawText(nb + "", x1, y1, paint);
 			}
+		}
+	}
+	
+	private void drawLeaders(Canvas c, List<Integer> leaders, int x, int y) {
+		int x1 = 0;
+		int y1 = 0;
+		int id = 0;
+		for (int leader : leaders) {
+			switch (leader) {
+			case 0:
+				x1 = x + 27;
+				y1 = y - 7;
+				id = R.drawable.leaderp1;
+				break;
+			case 1:
+				x1 = x + 91;
+				y1 = y - 7;
+				id = R.drawable.leaderp2;
+				break;
+			case 2:
+				x1 = x + 27;
+				y1 = y + 84;
+				id = R.drawable.leaderp3;
+				break;
+			case 3:
+				x1 = x + 91;
+				y1 = y + 84;
+				id = R.drawable.leaderp4;
+				break;
+			default:
+				break;
+			}
+			c.drawBitmap(lib.get(id), new Rect(0, 0, 48, 48), new Rect(x1,
+					y1, x1 + 48, y1 + 48), null);
+			
+			y1 += 23;
 		}
 	}
 

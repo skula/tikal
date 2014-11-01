@@ -1,7 +1,5 @@
 package com.skula.tikal.models;
 
-import java.util.List;
-
 import com.skula.tikal.constantes.Cnst;
 import com.skula.tikal.enums.CardType;
 import com.skula.tikal.enums.Direction;
@@ -39,58 +37,65 @@ public class Board {
 		}*/
 		
 		//A
-		tiles[0][0] = new Tile(new Card(1, CardType.TEMPLE, 1, 0, 0, 0, 2, 1, 0), 2);
+		tiles[0][0] = new Tile(new Card(1, CardType.TEMPLE, 1, 0, 0, 0, 2, 1, 0), 4);
+		tiles[0][0].putLeader(2);
+		tiles[0][0].addSpawn(3);
+		tiles[0][0].addSpawn(2);
 		tiles[0][0].addSpawn(1);
 		tiles[0][0].settle(1);
-		tiles[0][1] = new Tile(new Card(1, CardType.TREASURE, 4, 0, 0, 0, 2, 0, 1), 2);
+		tiles[0][1] = new Tile(new Card(1, CardType.TREASURE, 4, 0, 0, 0, 2, 0, 1), 4);
 		tiles[0][1].addSpawn(0);
-		tiles[0][2] = new Tile(new Card(1, CardType.JUNGLE, 0, 1, 1, 0, 1, 0, 0), 2);
+		tiles[0][1].addSpawn(3);
+		tiles[0][1].putLeader(3);
+		tiles[0][2] = new Tile(new Card(1, CardType.JUNGLE, 0, 1, 1, 0, 1, 0, 0), 4);
 		tiles[0][2].addSpawn(0);
-		tiles[1][0] = new Tile(new Card(1, CardType.TEMPLE, 2, 0, 0, 0, 2, 0, 1), 2);
+		tiles[1][0] = new Tile(new Card(1, CardType.TEMPLE, 2, 0, 0, 0, 2, 0, 1), 4);
 		tiles[1][0].putLeader(0);
+		tiles[1][0].addSpawn(0);
 		tiles[1][0].addSpawn(1);
 		tiles[1][0].addSpawn(1);
-		tiles[1][1] = new Tile(new Card(1, CardType.TREASURE, 4, 0, 1, 0, 2, 0, 0), 2);
-		tiles[1][2] = new Tile(new Card(1, CardType.TEMPLE, 2, 1, 0, 0, 2, 0, 0), 2);
+		tiles[1][1] = new Tile(new Card(1, CardType.TREASURE, 4, 0, 1, 0, 2, 0, 0), 4);
+		tiles[1][2] = new Tile(new Card(1, CardType.TEMPLE, 2, 1, 0, 0, 2, 0, 0), 4);
 		tiles[1][2].putLeader(1);
 		tiles[1][2].addSpawn(0);
+		tiles[1][2].addSpawn(1);
 		//B
-		tiles[2][0] = new Tile(new Card(2, CardType.VOLCANO, 0, 0, 0, 0, 0, 0, 0), 2);
-		tiles[2][1] = new Tile(new Card(2, CardType.TEMPLE, 2, 0, 1, 0, 2, 0, 0), 2);
-		tiles[2][2] = new Tile(new Card(2, CardType.JUNGLE, 0, 0, 0, 0, 2, 1, 0), 2);
-		tiles[2][3] = new Tile(new Card(2, CardType.JUNGLE, 0, 0, 0, 0, 2, 0, 1), 2);
-		tiles[2][4] = new Tile(new Card(2, CardType.TREASURE, 4, 0, 0, 1, 2, 0, 0), 2);
-		tiles[3][0] = new Tile(new Card(2, CardType.TEMPLE, 3, 1, 0, 0, 2, 0, 0), 2);
+		tiles[2][0] = new Tile(new Card(2, CardType.VOLCANO, 0, 0, 0, 0, 0, 0, 0), 4);
+		tiles[2][1] = new Tile(new Card(2, CardType.TEMPLE, 2, 0, 1, 0, 2, 0, 0), 4);
+		tiles[2][2] = new Tile(new Card(2, CardType.JUNGLE, 0, 0, 0, 0, 2, 1, 0), 4);
+		tiles[2][3] = new Tile(new Card(2, CardType.JUNGLE, 0, 0, 0, 0, 2, 0, 1), 4);
+		tiles[2][4] = new Tile(new Card(2, CardType.TREASURE, 4, 0, 0, 1, 2, 0, 0), 4);
+		tiles[3][0] = new Tile(new Card(2, CardType.TEMPLE, 3, 1, 0, 0, 2, 0, 0), 4);
 		tiles[3][0].addSpawn(0);
 		//C
-		tiles[3][1] = new Tile(new Card(3, CardType.TEMPLE, 4, 0, 1, 0, 2, 0, 0), 2);
-		tiles[3][2] = new Tile(new Card(3, CardType.JUNGLE, 0, 0, 0, 0, 3, 0, 0), 2);
-		tiles[3][3] = new Tile(new Card(3, CardType.JUNGLE, 0, 1, 1, 0, 1, 0, 0), 2);
-		tiles[3][4] = new Tile(new Card(3, CardType.TREASURE, 3, 0, 0, 0, 3, 0, 0), 2);
-		tiles[4][0] = new Tile(new Card(3, CardType.TEMPLE, 3, 0, 0, 0, 3, 0, 0), 2);
+		tiles[3][1] = new Tile(new Card(3, CardType.TEMPLE, 4, 0, 1, 0, 2, 0, 0), 4);
+		tiles[3][2] = new Tile(new Card(3, CardType.JUNGLE, 0, 0, 0, 0, 3, 0, 0), 4);
+		tiles[3][3] = new Tile(new Card(3, CardType.JUNGLE, 0, 1, 1, 0, 1, 0, 0), 4);
+		tiles[3][4] = new Tile(new Card(3, CardType.TREASURE, 3, 0, 0, 0, 3, 0, 0), 4);
+		tiles[4][0] = new Tile(new Card(3, CardType.TEMPLE, 3, 0, 0, 0, 3, 0, 0), 4);
 		//D
-		tiles[4][1] = new Tile(new Card(4, CardType.TEMPLE, 5, 0, 0, 0, 3, 0, 0), 2);
-		tiles[4][2] = new Tile(new Card(4, CardType.TREASURE, 3, 0, 0, 0, 3, 0, 0), 2);
-		tiles[4][3] = new Tile(new Card(4, CardType.VOLCANO, 0, 0, 0, 0, 0, 0, 0), 2);
-		tiles[4][4] = new Tile(new Card(4, CardType.JUNGLE, 0, 0, 1, 0, 1, 0, 1), 2);
-		tiles[5][0] = new Tile(new Card(4, CardType.TEMPLE, 5, 1, 0, 0, 2, 0, 0), 2);
+		tiles[4][1] = new Tile(new Card(4, CardType.TEMPLE, 5, 0, 0, 0, 3, 0, 0), 4);
+		tiles[4][2] = new Tile(new Card(4, CardType.TREASURE, 3, 0, 0, 0, 3, 0, 0), 4);
+		tiles[4][3] = new Tile(new Card(4, CardType.VOLCANO, 0, 0, 0, 0, 0, 0, 0), 4);
+		tiles[4][4] = new Tile(new Card(4, CardType.JUNGLE, 0, 0, 1, 0, 1, 0, 1), 4);
+		tiles[5][0] = new Tile(new Card(4, CardType.TEMPLE, 5, 1, 0, 0, 2, 0, 0), 4);
 		//E
-		tiles[5][1] = new Tile(new Card(5, CardType.TEMPLE, 6, 0, 0, 0, 3, 0, 0), 2);
-		tiles[5][2] = new Tile(new Card(5, CardType.TREASURE, 2, 0, 0, 1, 2, 0, 0), 2);
-		tiles[5][3] = new Tile(new Card(5, CardType.JUNGLE, 0, 1, 0, 0, 2, 0, 0), 2);
-		tiles[5][4] = new Tile(new Card(5, CardType.JUNGLE, 0, 1, 0, 0, 2, 0, 0), 2);
-		tiles[6][0] = new Tile(new Card(5, CardType.TEMPLE, 5, 0, 0, 0, 3, 0, 0), 2);
+		tiles[5][1] = new Tile(new Card(5, CardType.TEMPLE, 6, 0, 0, 0, 3, 0, 0), 4);
+		tiles[5][2] = new Tile(new Card(5, CardType.TREASURE, 2, 0, 0, 1, 2, 0, 0), 4);
+		tiles[5][3] = new Tile(new Card(5, CardType.JUNGLE, 0, 1, 0, 0, 2, 0, 0), 4);
+		tiles[5][4] = new Tile(new Card(5, CardType.JUNGLE, 0, 1, 0, 0, 2, 0, 0), 4);
+		tiles[6][0] = new Tile(new Card(5, CardType.TEMPLE, 5, 0, 0, 0, 3, 0, 0), 4);
 		//F
-		tiles[6][1] = new Tile(new Card(6, CardType.TEMPLE, 4, 0, 0, 0, 3, 0, 0), 2);
-		tiles[6][2] = new Tile(new Card(6, CardType.VOLCANO, 0, 0, 0, 0, 0, 0, 0), 2);
-		tiles[6][3] = new Tile(new Card(6, CardType.JUNGLE, 0, 1, 0, 0, 2, 0, 0), 2);
-		tiles[6][4] = new Tile(new Card(6, CardType.TREASURE, 2, 1, 0, 0, 2, 0, 0), 2);
-		tiles[7][0] = new Tile(new Card(6, CardType.TEMPLE, 4, 0, 0, 0, 2, 1, 0), 2);
+		tiles[6][1] = new Tile(new Card(6, CardType.TEMPLE, 4, 0, 0, 0, 3, 0, 0), 4);
+		tiles[6][2] = new Tile(new Card(6, CardType.VOLCANO, 0, 0, 0, 0, 0, 0, 0), 4);
+		tiles[6][3] = new Tile(new Card(6, CardType.JUNGLE, 0, 1, 0, 0, 2, 0, 0), 4);
+		tiles[6][4] = new Tile(new Card(6, CardType.TREASURE, 2, 1, 0, 0, 2, 0, 0), 4);
+		tiles[7][0] = new Tile(new Card(6, CardType.TEMPLE, 4, 0, 0, 0, 2, 1, 0), 4);
 		//G
-		tiles[7][1] = new Tile(new Card(7, CardType.TEMPLE, 3, 0, 0, 1, 2, 0, 0), 2);
-		tiles[7][2] = new Tile(new Card(7, CardType.JUNGLE, 0, 1, 0, 0, 2, 0, 0), 2);
-		tiles[7][3] = new Tile(new Card(7, CardType.TEMPLE, 3, 0, 0, 0, 2, 0, 1), 2);
-		tiles[7][4] = new Tile(new Card(7, CardType.TREASURE, 2, 0, 0, 0, 3, 0, 0), 2);
+		tiles[7][1] = new Tile(new Card(7, CardType.TEMPLE, 3, 0, 0, 1, 2, 0, 0), 4);
+		tiles[7][2] = new Tile(new Card(7, CardType.JUNGLE, 0, 1, 0, 0, 2, 0, 0), 4);
+		tiles[7][3] = new Tile(new Card(7, CardType.TEMPLE, 3, 0, 0, 0, 2, 0, 1), 4);
+		tiles[7][4] = new Tile(new Card(7, CardType.TREASURE, 2, 0, 0, 0, 3, 0, 0), 4);
 	}
 
 	// a faire et a tester

@@ -81,6 +81,10 @@ public class PictureLibrary{
 		this.map.put(R.drawable.tresor2, 			BitmapFactory.decodeResource(res, R.drawable.tresor2));
 		this.map.put(R.drawable.tresor3, 			BitmapFactory.decodeResource(res, R.drawable.tresor3));
 		this.map.put(R.drawable.tresor4, 			BitmapFactory.decodeResource(res, R.drawable.tresor4));
+		this.map.put(R.drawable.leaderp1, 			BitmapFactory.decodeResource(res, R.drawable.leaderp1));
+		this.map.put(R.drawable.leaderp2, 			BitmapFactory.decodeResource(res, R.drawable.leaderp2));
+		this.map.put(R.drawable.leaderp3, 			BitmapFactory.decodeResource(res, R.drawable.leaderp3));
+		this.map.put(R.drawable.leaderp4, 			BitmapFactory.decodeResource(res, R.drawable.leaderp4));
 	}
 		
 	public Bitmap get(int id){
