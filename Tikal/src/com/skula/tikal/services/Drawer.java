@@ -1,5 +1,6 @@
 package com.skula.tikal.services;
 
+
 import java.util.List;
 import java.util.Map;
 
@@ -63,8 +64,8 @@ public class Drawer {
 	
 	private void drawPA(Canvas c, int n){
 		paint.setColor(Color.YELLOW);
-		paint.setTextSize(35f);
-		c.drawText(n + " PA", 1100, 330, paint);
+		paint.setTextSize(35);
+		c.drawText(n + " PA", 1080, 328, paint);
 	}
 	
 	private void drawScores(Canvas c, Player[] players){
@@ -98,11 +99,14 @@ public class Drawer {
 			paint.setColor(Color.YELLOW);
 			paint.setTextSize(25f);
 			// paint.setStrokeWidth(5);
-			c.drawText("1000", x + 40, y + i * dy + 27, paint);
-			c.drawText("9", x + 40, y + i * dy + 52, paint);
-			c.drawBitmap(lib.get(R.drawable.leaderlogo), new Rect(0, 0, 48, 48), new Rect(x + 130, y + 7 + i * dy,
-					x + 130 + 48, y + 7 + i * dy + 48), null);
-			//c.drawText("^", x + 130, y + i * dy + 60, paint);
+			c.drawText(p.getScore()+"", x + 40, y + i * dy + 27, paint);
+			c.drawText(p.getSpawnLeft()+"", x + 40, y + i * dy + 52, paint);
+			
+			if(!p.isLeaderIn()){
+				c.drawBitmap(lib.get(R.drawable.leaderlogo), new Rect(0, 0, 48, 48), new Rect(x + 130, y + 7 + i * dy,
+						x + 130 + 48, y + 7 + i * dy + 48), null);
+				//c.drawText("^", x + 130, y + i * dy + 60, paint);
+			}
 			i++;
 		}
 	}
@@ -309,11 +313,36 @@ public class Drawer {
 		}
 
 		// camp
-
-		
-
+		if(t.isSettled() && t.isJungle()){
+			drawCamp(c, t.getOwnerId(), x, y);
+		}
 	}
 
+	private void drawCamp(Canvas c, int pId, int x, int y) {
+		int id = 0;
+		int x1 = x + 42;
+		int y1 = y + 15;
+		switch(pId){
+		case 0:
+			id= R.drawable.campp1;
+			break;
+		case 1:
+			id= R.drawable.campp1;
+			break;
+		case 2:
+			id= R.drawable.campp3;
+			break;
+		case 3:
+			id= R.drawable.campp4;
+			break;
+		default:
+			break;
+		}
+		
+		c.drawBitmap(lib.get(id), new Rect(0, 0, 80, 80), new Rect(x1,
+				y1, x1 + 80, y1 + 80), null);
+	}
+	
 	private void drawSpawns(Canvas c, Map<Integer, Integer> spawns, int x, int y) {
 		int x1 = 0;
 		int y1 = 0;

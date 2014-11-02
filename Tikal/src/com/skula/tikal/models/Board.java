@@ -63,6 +63,8 @@ public class Board {
 		tiles[2][0] = new Tile(new Card(2, CardType.VOLCANO, 0, 0, 0, 0, 0, 0, 0), 4);
 		tiles[2][1] = new Tile(new Card(2, CardType.TEMPLE, 2, 0, 1, 0, 2, 0, 0), 4);
 		tiles[2][2] = new Tile(new Card(2, CardType.JUNGLE, 0, 0, 0, 0, 2, 1, 0), 4);
+		tiles[2][2].addSpawn(0);
+		tiles[2][2].settle(0);
 		tiles[2][3] = new Tile(new Card(2, CardType.JUNGLE, 0, 0, 0, 0, 2, 0, 1), 4);
 		tiles[2][4] = new Tile(new Card(2, CardType.TREASURE, 4, 0, 0, 1, 2, 0, 0), 4);
 		tiles[3][0] = new Tile(new Card(2, CardType.TEMPLE, 3, 1, 0, 0, 2, 0, 0), 4);
