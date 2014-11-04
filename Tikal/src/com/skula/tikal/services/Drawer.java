@@ -265,10 +265,9 @@ public class Drawer {
 		// tuile
 		if (t.isVolcano()) {
 			// tuile volcano
-			// c.drawBitmap(getPict(R.drawable.volcano), new Rect(0, 0,
-			// Cnst.TILE_WIDTH, Cnst.TILE_HIGHT),
-			// new Rect(x,y,x+Cnst.TILE_DRAW_WIDTH+1, y+Cnst.TILE_DRAW_HIGHT),
-			// null);
+			c.drawBitmap(lib.get(R.drawable.volcano), new Rect(0, 0,
+					Cnst.TILE_WIDTH, Cnst.TILE_HIGHT), new Rect(x, y, x
+					+ Cnst.TILE_WIDTH + 1, y + Cnst.TILE_HIGHT), null);
 			return;
 		} else {
 			// tuile jungle

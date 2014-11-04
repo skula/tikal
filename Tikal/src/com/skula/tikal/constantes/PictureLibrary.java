@@ -81,6 +81,7 @@ public class PictureLibrary{
 		this.map.put(R.drawable.templeownerp3, 		BitmapFactory.decodeResource(res, R.drawable.templeownerp3));
 		this.map.put(R.drawable.templeownerp4, 		BitmapFactory.decodeResource(res, R.drawable.templeownerp4));
 		this.map.put(R.drawable.tile, 				BitmapFactory.decodeResource(res, R.drawable.tile));
+		this.map.put(R.drawable.volcano, 			BitmapFactory.decodeResource(res, R.drawable.volcano));
 		this.map.put(R.drawable.tresor1, 			BitmapFactory.decodeResource(res, R.drawable.tresor1));
 		this.map.put(R.drawable.tresor2, 			BitmapFactory.decodeResource(res, R.drawable.tresor2));
 		this.map.put(R.drawable.tresor3, 			BitmapFactory.decodeResource(res, R.drawable.tresor3));
