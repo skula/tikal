@@ -62,6 +62,7 @@ public class GameEngine {
 
 		actions.add(9);
 		actions.add(10);
+		players[0].setScore(999);
 	}
 
 	public void nextPlayer() {

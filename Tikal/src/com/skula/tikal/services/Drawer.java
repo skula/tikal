@@ -66,6 +66,8 @@ public class Drawer {
 		paint.setColor(Color.YELLOW);
 		paint.setTextSize(35);
 		c.drawText(n + " PA", 1080, 328, paint);
+		
+		c.drawBitmap(lib.get(R.drawable.volcanologo), new Rect(0,0,60, 40), new Rect(1200, 293,1200+60, 293+40), paint);
 	}
 	
 	private void drawScores(Canvas c, Player[] players){
@@ -103,9 +105,8 @@ public class Drawer {
 			c.drawText(p.getSpawnLeft()+"", x + 40, y + i * dy + 52, paint);
 			
 			if(!p.isLeaderIn()){
-				c.drawBitmap(lib.get(R.drawable.leaderlogo), new Rect(0, 0, 48, 48), new Rect(x + 130, y + 7 + i * dy,
-						x + 130 + 48, y + 7 + i * dy + 48), null);
-				//c.drawText("^", x + 130, y + i * dy + 60, paint);
+				c.drawBitmap(lib.get(R.drawable.leaderlogo), new Rect(0, 0, 24, 24), new Rect(x + 75, y - 40 + i * dy,
+						x + 75 + 24, y - 40 + i * dy + 24), null);
 			}
 			i++;
 		}

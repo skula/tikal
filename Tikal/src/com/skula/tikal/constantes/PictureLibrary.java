@@ -95,6 +95,7 @@ public class PictureLibrary{
 		this.map.put(R.drawable.campp2, 			BitmapFactory.decodeResource(res, R.drawable.campp2));
 		this.map.put(R.drawable.campp3, 			BitmapFactory.decodeResource(res, R.drawable.campp3));
 		this.map.put(R.drawable.campp4, 			BitmapFactory.decodeResource(res, R.drawable.campp4));
+		this.map.put(R.drawable.volcanologo, 		BitmapFactory.decodeResource(res, R.drawable.volcanologo));
 	}
 		
 	public Bitmap get(int id){
